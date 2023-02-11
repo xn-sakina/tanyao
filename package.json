@@ -1,0 +1,64 @@
+{
+  "name": "tanyao",
+  "version": "1.0.1",
+  "description": "Git repo clone and multi-account manager",
+  "main": "dist/index.js",
+  "bin": {
+    "tanyao": "bin/tanyao.js"
+  },
+  "author": "fz6m",
+  "homepage": "https://github.com/xn-sakina/tanyao#README",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xn-sakina/tanyao"
+  },
+  "keywords": [
+    "git",
+    "git-repo",
+    "git-repo-manager",
+    "git-multi-account",
+    "git-multi-account-manager",
+    "git-clone-manager"
+  ],
+  "files": [
+    "bin",
+    "dist",
+    "compiled"
+  ],
+  "scripts": {
+    "dev": "tsc -w",
+    "test": "DEBUG_TANYAO=1 TEST_TANYAO=1 tsx ./src/index.ts",
+    "build:deps": "dora build",
+    "build": "tsc",
+    "format": "prettier --write --parser typescript --cache \"./src/**/*.{ts,tsx}\"",
+    "prepublishOnly": "pnpm format && pnpm build:deps && pnpm build",
+    "push": "npm publish --access public --registry https://registry.npmjs.com/"
+  },
+  "devDependencies": {
+    "@trivago/prettier-plugin-sort-imports": "^4.0.0",
+    "@types/fs-extra": "^11.0.1",
+    "@types/git-url-parse": "^9.0.1",
+    "@types/node": "^18.13.0",
+    "@types/prompts": "^2.4.2",
+    "@xn-sakina/dora": "^1.0.0",
+    "@xn-sakina/mental": "^3.1.0",
+    "chalk": "^5.2.0",
+    "execa": "^7.0.0",
+    "prettier": "^2.8.4",
+    "tanyao": "link:./",
+    "tsx": "^3.12.3",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@napi-rs/clipboard": "^1.0.1",
+    "commander": "^10.0.0",
+    "fs-extra": "^11.1.0",
+    "git-url-parse": "^13.1.0",
+    "prompts": "^2.4.2"
+  },
+  "license": "MIT",
+  "packageManager": "pnpm@7.24.2",
+  "publishConfig": {
+    "access": "public"
+  }
+}
