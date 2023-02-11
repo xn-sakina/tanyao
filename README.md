@@ -27,7 +27,18 @@ Git repo clone and multi-account manager
       # or ... 
       tanyao clone https://github.com/xn-sakina/tanyao.git ./tmp-path
     ```
+  
+    directory structure :
 
+    ```ts
+    base
+      ├── github.com
+      │   └── xn-sakina
+      │       └── tanyao
+      └── gitlab.com
+          └── owner
+              └── repo
+    ```
 
 ## Config
 
