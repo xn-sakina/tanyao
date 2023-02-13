@@ -1,6 +1,6 @@
 {
   "name": "tanyao",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Git repo clone and multi-account manager",
   "main": "dist/index.js",
   "bin": {
