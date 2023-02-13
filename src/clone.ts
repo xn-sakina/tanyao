@@ -132,7 +132,9 @@ export const clone = async (opts: { repo: string; dir: string }) => {
     await execa('git', ['config', '--replace-all', 'user.email', email], {
       cwd: targetDir,
     })
-    logger.success(`Set git user ${chalk.blue(username)} success`)
+    logger.success(
+      `Set git user ${chalk.blue(`${username}(${email})`)} success`
+    )
   }
   setGitConfig()
 }
