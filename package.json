@@ -1,6 +1,6 @@
 {
   "name": "tanyao",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Git repo clone and multi-account manager",
   "main": "dist/index.js",
   "bin": {
@@ -31,7 +31,7 @@
     "build:deps": "dora build",
     "build": "tsc",
     "format": "prettier --write --parser typescript --cache \"./src/**/*.{ts,tsx}\"",
-    "prepublishOnly": "pnpm format && pnpm build:deps && pnpm build",
+    "prepublishOnly": "pnpm format && pnpm build",
     "push": "npm publish --access public --registry https://registry.npmjs.com/"
   },
   "devDependencies": {
