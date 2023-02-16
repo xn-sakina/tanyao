@@ -31,7 +31,7 @@ export const clone = async (opts: { repo: string; dir: string }) => {
 
   let parsedRepo = gitParser(repo)
   const matchedCodebase = config.codebase.find((codebase) => {
-    return parsedRepo.source === codebase.url
+    return parsedRepo.resource === codebase.url
   })
   if (!matchedCodebase) {
     logger.error(`No matched codebase found for repo: ${chalk.red(repo)}`)
