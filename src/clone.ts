@@ -73,7 +73,7 @@ export const clone = async (opts: { repo: string; dir: string }) => {
   }
   // targetDir
   const base = selectedBase as string
-  const source = parsedRepo.source
+  const source = parsedRepo.resource
   const pathname = parsedRepo.full_name
   const targetDir = useSpecifiedDir ? dir : path.join(base, source, pathname)
 
