@@ -106,9 +106,22 @@ export const clone = async (opts: { repo: string; dir: string }) => {
     )} ...`
   )
   try {
-    await execa('git', ['clone', repo, targetDir], {
-      // allow use relative path clone
-      cwd: process.cwd(),
+    await new Promise<void>((resolve, reject) => {
+      execa('git', ['clone', repo, targetDir, '--progress'], {
+        // allow use relative path clone
+        cwd: process.cwd(),
+      })
+        .stderr?.on('data', (data: string) => {
+          if (!data.includes('Cloning into')) {
+            process.stdout.write(data)
+          }
+        })
+        .on('end', () => {
+          resolve()
+        })
+        .on('error', (e) => {
+          reject(e)
+        })
     })
     // success
     logger.success(`🎉 Clone success`)
