@@ -10,3 +10,10 @@ export interface ITanyaoConfig {
   codebase: ICodeBase[]
   alias?: Record<string, string>
 }
+
+export interface ICloneOptions {
+  /**
+   * @default false
+   */
+  progress: boolean
+}

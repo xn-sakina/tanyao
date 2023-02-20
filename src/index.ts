@@ -9,10 +9,12 @@ export const main = async () => {
   program
     .command('clone <repo> [dir]')
     .description('clone a repository')
-    .action((repo, dir) => {
+    .option('-p, --progress', 'show clone progress', false)
+    .action((repo, dir, options) => {
       clone({
         repo,
         dir,
+        options
       })
     })
 

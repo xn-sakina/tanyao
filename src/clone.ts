@@ -1,4 +1,5 @@
 import { getConfig } from './config'
+import type { ICloneOptions } from './interface'
 import { logger } from './logger'
 import { Clipboard } from '@napi-rs/clipboard'
 import fs from 'fs-extra'
@@ -10,8 +11,13 @@ import { execa } from 'tanyao/compiled/execa'
 
 const clipboard = new Clipboard()
 
-export const clone = async (opts: { repo: string; dir: string }) => {
-  let { repo, dir } = opts
+export const clone = async (opts: {
+  repo: string
+  dir: string
+  options: ICloneOptions
+}) => {
+  let { repo, dir, options } = opts
+  const { progress } = options
   const config = await getConfig()
   if (!config) {
     return
@@ -105,24 +111,38 @@ export const clone = async (opts: { repo: string; dir: string }) => {
       path.basename(base)
     )} ...`
   )
-  try {
-    await new Promise<void>((resolve, reject) => {
-      execa('git', ['clone', repo, targetDir, '--progress'], {
+  const cloneTask = () => {
+    return new Promise<void>((resolve, reject) => {
+      const params = [progress && '--progress'].filter(Boolean) as string[]
+      const spawn = execa('git', ['clone', repo, targetDir, ...params], {
         // allow use relative path clone
         cwd: process.cwd(),
       })
-        .stderr?.on('data', (data: string) => {
-          if (!data.includes('Cloning into')) {
-            process.stdout.write(data)
-          }
-        })
-        .on('end', () => {
+      // https://juejin.cn/post/6844903676792815629
+      spawn.stderr?.on('data', (data: string | Buffer) => {
+        if (!progress) {
+          return
+        }
+        const dataAsString = data?.toString?.()
+        if (
+          dataAsString?.includes('Cloning into') ||
+          dataAsString?.includes('正克隆到')
+        ) {
+          return
+        }
+        process.stdout.write(data)
+      })
+      spawn.on('close', (code) => {
+        if (code === 0) {
           resolve()
-        })
-        .on('error', (e) => {
-          reject(e)
-        })
+        } else {
+          reject(new Error(`Clone failed with code ${code}`))
+        }
+      })
     })
+  }
+  try {
+    await cloneTask()
     // success
     logger.success(`🎉 Clone success`)
     // copy

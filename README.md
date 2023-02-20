@@ -66,6 +66,14 @@ Open `~/.config/tanyao/config.json`, set up a code `base` and git account info :
 }
 ```
 
+## Options
+
+#### `--progress`
+
+alias: `-p`
+
+Show git clone progress.
+
 ### Advanced config
 
 #### Shell alias (Recommend)
