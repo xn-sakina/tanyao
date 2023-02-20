@@ -66,14 +66,6 @@ Open `~/.config/tanyao/config.json`, set up a code `base` and git account info :
 }
 ```
 
-## Options
-
-#### `--progress`
-
-alias: `-p`
-
-Show git clone progress.
-
 ### Advanced config
 
 #### Shell alias (Recommend)
@@ -107,6 +99,14 @@ See [Suffix aliases (-s) in Zsh](https://www.stefanjudis.com/today-i-learned/suf
   ]
 }
 ```
+
+## Options
+
+#### `--progress`
+
+alias: `-p`
+
+Show git clone progress.
 
 ## Thanks/Inspiration
 
