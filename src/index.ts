@@ -14,7 +14,7 @@ export const main = async () => {
       clone({
         repo,
         dir,
-        options
+        options,
       })
     })
 
