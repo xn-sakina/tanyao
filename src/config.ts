@@ -1,10 +1,10 @@
 import { ITanyaoConfig } from './interface'
 import { logger } from './logger'
 import fs from 'fs-extra'
+import os from 'os'
 import path from 'path'
 import chalk from 'tanyao/compiled/chalk'
 import { execa } from 'tanyao/compiled/execa'
-import os from 'os'
 
 export const getConfig = async () => {
   if (process.env.TEST_TANYAO) {
