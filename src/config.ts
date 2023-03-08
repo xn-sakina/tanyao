@@ -11,7 +11,7 @@ export const getConfig = async () => {
     process.env.CODE_BASE = path.join(__dirname, '../tests')
   }
 
-  const home = process.env?.HOME
+  const home = process.env?.HOME || process.env?.USERPROFILE
   if (!home?.length) {
     logger.error(
       `No home directory found. Please set the ${chalk.bold.yellow(
