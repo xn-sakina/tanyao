@@ -108,6 +108,12 @@ alias: `-p`
 
 Show git clone progress.
 
+#### `--depth`
+
+alias: `-d`
+
+Git clone depth.
+
 ## Thanks/Inspiration
 
  - [projj](https://github.com/popomore/projj) : Manage repository easily.
