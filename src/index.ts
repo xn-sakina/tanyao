@@ -10,6 +10,7 @@ export const main = async () => {
     .command('clone <repo> [dir]')
     .description('clone a repository')
     .option('-p, --progress', 'show clone progress', false)
+    .option('-d, --depth <size>', 'clone depth')
     .action((repo, dir, options) => {
       clone({
         repo,

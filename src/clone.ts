@@ -17,7 +17,7 @@ export const clone = async (opts: {
   options: ICloneOptions
 }) => {
   let { repo, dir, options } = opts
-  const { progress } = options
+  const { progress, depth } = options
   const config = await getConfig()
   if (!config) {
     return
@@ -113,7 +113,10 @@ export const clone = async (opts: {
   )
   const cloneTask = () => {
     return new Promise<void>((resolve, reject) => {
-      const params = [progress && '--progress'].filter(Boolean) as string[]
+      const params = [
+        progress && '--progress',
+        ...(depth ? ['--depth', depth] : []),
+      ].filter(Boolean) as string[]
       const spawn = execa('git', ['clone', repo, targetDir, ...params], {
         // allow use relative path clone
         cwd: process.cwd(),

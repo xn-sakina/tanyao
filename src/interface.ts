@@ -16,4 +16,8 @@ export interface ICloneOptions {
    * @default false
    */
   progress: boolean
+  /**
+   * @default undefined
+   */
+  depth?: number
 }
