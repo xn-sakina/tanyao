@@ -106,6 +106,7 @@ example:
 
 ```ini
 # .gitconfig
+
 [includeIf "gitdir:~/code_base_name/"]
 path = ~/.gitconfig-code_base_name
 ```
