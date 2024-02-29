@@ -114,16 +114,16 @@ path = ~/.gitconfig-code_base_name
 # ~/.gitconfig-code_base_name
 
 [user]
-	name = github_user_id
-	email = github_email
+  name = github_user_id
+  email = github_email
 [core]
-	excludesfile = ~/.gitignore_global
-	sshCommand = ssh -i ~/.ssh/id_ed25519
+  excludesfile = ~/.gitignore_global
+  sshCommand = ssh -i ~/.ssh/id_ed25519
 [init]
-	defaultBranch = main
+  defaultBranch = main
 ```
 
-See [How to Use Two GitHub Accounts on a Macbook the Right Way](https://fayazahmed.com/articles/how-to-use-two-github-accounts-on-a-macbook-the-right-way).
+See [How to Use Two GitHub Accounts on a Macbook the Right Way](https://fayazahmed.com/articles/how-to-use-two-github-accounts-on-a-macbook-the-right-way)
 
 ## Options
 
